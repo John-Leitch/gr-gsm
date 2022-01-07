@@ -20,6 +20,7 @@
 add_sources(
     burst_file_sink_impl.cc
     burst_file_source_impl.cc
+    packed_burst_file_sink_impl.cc
     bursts_printer_impl.cc
     collect_system_info_impl.cc
     controlled_fractional_resampler_cc_impl.cc

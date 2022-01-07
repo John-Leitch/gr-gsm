@@ -25,6 +25,7 @@ install(
     bursts_printer.h
     burst_file_source.h
     burst_file_sink.h
+    packed_burst_file_sink.h
     collect_system_info.h
     message_file_sink.h
     message_file_source.h

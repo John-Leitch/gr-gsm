@@ -31,6 +31,7 @@ install(
     gsm_tmsi_dumper.block.yml
     gsm_burst_file_sink.block.yml
     gsm_burst_file_source.block.yml
+    gsm_packed_burst_file_sink.block.yml
     gsm_message_file_sink.block.yml
     gsm_message_file_source.block.yml
     gsm_msg_to_tag.block.yml
