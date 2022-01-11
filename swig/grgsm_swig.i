@@ -61,6 +61,7 @@
 #include "grgsm/misc_utils/burst_file_sink.h"
 #include "grgsm/misc_utils/burst_file_source.h"
 #include "grgsm/misc_utils/packed_burst_file_sink.h"
+#include "grgsm/misc_utils/packed_burst_file_source.h"
 #include "grgsm/misc_utils/collect_system_info.h"
 #include "grgsm/misc_utils/extract_cmc.h"
 #include "grgsm/misc_utils/extract_assignment_cmd.h"
@@ -133,6 +134,8 @@ GR_SWIG_BLOCK_MAGIC2(gsm, burst_file_sink);
 GR_SWIG_BLOCK_MAGIC2(gsm, burst_file_source);
 %include "grgsm/misc_utils/packed_burst_file_sink.h"
 GR_SWIG_BLOCK_MAGIC2(gsm, packed_burst_file_sink);
+%include "grgsm/misc_utils/packed_burst_file_source.h"
+GR_SWIG_BLOCK_MAGIC2(gsm, packed_burst_file_source);
 %include "grgsm/misc_utils/collect_system_info.h"
 GR_SWIG_BLOCK_MAGIC2(gsm, collect_system_info);
 %include "grgsm/misc_utils/extract_system_info.h"

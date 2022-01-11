@@ -85,6 +85,7 @@ namespace gr {
         
         pkd.hdr.arfcn = header->arfcn;
         pkd.hdr.frame_number = be32toh(header->frame_number);
+        pkd.hdr.timeslot = header->timeslot;
 
         int8_t * burst = (int8_t *)(pmt::blob_data(header_plus_burst))+sizeof(gsmtap_hdr);
         size_t burst_len=pmt::blob_length(header_plus_burst)-sizeof(gsmtap_hdr);
@@ -111,6 +112,11 @@ namespace gr {
             for (int i = 0; i < burst_len; i++)
             {
                 int bit = i & 0x7;
+
+                if (bit == 0x0)
+                {
+                    pkd.buffer[j] = 0x0;
+                }
 
                 if (burst[i] == 1)
                 {

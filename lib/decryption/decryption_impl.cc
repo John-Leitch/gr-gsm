@@ -100,14 +100,16 @@ namespace gr {
         }
         else
         {
-            for (int i=0; i<d_k_c.size(); i++)
-            {
-                if (d_k_c[i] != 0)
-                {
-                    d_k_c_valid = true;
-                    return;
-                }
-            }
+            d_k_c_valid = true;
+            return;
+            // for (int i=0; i<d_k_c.size(); i++)
+            // {
+            //     if (d_k_c[i] != 0)
+            //     {
+            //         d_k_c_valid = true;
+            //         return;
+            //     }
+            // }
         }
     }
 

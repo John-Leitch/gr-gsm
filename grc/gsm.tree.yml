@@ -41,8 +41,9 @@
 - Utilities:
   - gsm_bursts_printer
   - gsm_burst_file_sink
-  - gsm_packed_burst_file_sink
   - gsm_burst_file_source
+  - gsm_packed_burst_file_sink
+  - gsm_packed_burst_file_source
   - gsm_collect_system_info
   - gsm_message_file_sink
   - gsm_message_file_source
