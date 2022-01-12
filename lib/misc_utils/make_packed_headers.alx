@@ -1,0 +1,49 @@
+#'std';
+
+var headers = [];
+
+var writeHeader = @(name, body) {
+    var path = io.script.path(name);
+    headers.add(name);
+    Cli.WriteLine('Writing ~Cyan~{0}~R~ to ~Magenta~{1}~R~', name, path);
+    body @io.txt(path);
+};
+
+'
+00011111 01101110 11000001 01001001 11000001 00100010 
+00000011 11100011 10001011 10001011 10001010 11101001 
+01000110 01100111 00111101 00111110 00100101 11110101 
+0000
+'
+-?Char.IsDigit
+->(@()'0' + $_)
+@every(8)
+->concat
+@seq.iter(@(x, i) ({
+    is64: x.Length == 16,
+    check: 'burst{0}[{1}] == 0x{2}' :: [is64 ? "64" : "32", is64 ? i : i * 2, x],
+}))
+->@.check
+@join(' && ')
+@format('#define FAST_BURST_CHECK ({0})')
+@writeHeader('fast_burst_check.generated.h');
+
+@{ %>
+    struct packed_normal_burst {
+        packed_burst_header hdr;
+        <% 0..148->@format('uint8_t bit{0}:1;') for(x) { %>
+        <%= x %>
+        <% }; %>
+    };
+<% }
+| strOut
+@writeHeader("packed_normal_burst.generated.h");
+
+headers
+->@format('#include "{0}"')
+@join('\r\n')@writeHeader('packed_burst.generated.h');
+
+
+
+//0..148->@String.Format('uint8_t bit{0} : 1;') @String.Join('\r\n') @io.txt('f:/temp/members.h')
+//0..148->@format('pkd.bit{0} = burst[{0}];') @join('\r\n') @io.txt('f:/temp/members.h')

@@ -28,19 +28,6 @@
 #include <grgsm/misc_utils/packed_burst_file_sink.h>
 #include <fstream>
 
-struct packed_burst_header {
-    uint16_t arfcn;		/* ARFCN (frequency) */
-    uint32_t frame_number;	/* GSM Frame Number (FN) */
-    uint8_t type : 4;	/* Type of burst/channel, see above */
-    uint8_t timeslot : 4;	/* timeslot (0..7 on Um) */
-};
-
-struct packed_burst {
-    packed_burst_header hdr;
-    uint8_t length;
-    uint8_t *buffer; 
-};
-
 namespace gr {
   namespace gsm {
 
@@ -49,6 +36,11 @@ namespace gr {
      private:
         std::ofstream d_output_file;
         static const int8_t d_dummy_burst[];
+        uint32_t current_frame_number = 0;
+        uint8_t current_frame_number_count = 0;
+        uint32_t bursts_caught = 0;
+        uint32_t bursts_expected = 0;
+        uint32_t frames_caught = 0;
      public:
       packed_burst_file_sink_impl(const std::string &filename);
       ~packed_burst_file_sink_impl();

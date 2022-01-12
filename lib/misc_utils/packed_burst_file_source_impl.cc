@@ -119,7 +119,7 @@ namespace gr
                 //     ph.timeslot);
                 if (ph.type == GSMTAP_BURST_DUMMY)
                 {
-                    memcpy(burst, packed_burst_file_source_impl::d_dummy_burst, 152);
+                    memcpy(burst, packed_burst_file_source_impl::d_dummy_burst, sizeof(packed_burst_file_source_impl::d_dummy_burst));
                     // continue;
                 }
                 else
