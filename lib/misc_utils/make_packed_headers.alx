@@ -18,6 +18,7 @@ var writeHeader = @(name, body) {
 -?Char.IsDigit
 ->(@()'0' + $_)
 @every(8)
+->reverse
 ->concat
 @seq.iter(@(x, i) ({
     is64: x.Length == 16,
